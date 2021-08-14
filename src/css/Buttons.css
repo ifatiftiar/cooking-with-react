@@ -1,0 +1,35 @@
+.btn {
+    font-size: inherit;
+    font-weight: bold;
+    background: none;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+
+.btn--primary {
+    color: white;
+    background-color: hsl(200, 100%, 50%);
+    transition: 500ms;
+}
+
+.btn--primary:hover {
+    background-color: hsl(200, 100%, 35%);
+}
+
+.btn--danger {
+    color: white;
+    background-color: hsl(0, 100%, 50%);
+    transition: 500ms;
+}
+
+.btn--danger:hover {
+    background-color: hsl(0, 100%, 35%);
+}
+
+.mr-1 {
+    margin-right: 16px;
+}
+

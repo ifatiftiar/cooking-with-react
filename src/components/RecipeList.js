@@ -3,11 +3,16 @@ import Recipe from './Recipe';
 
 function RecipeList({recipes}) {
     return (
+        <div className="recipe-list">
         <div>
             {
                 recipes.map(recipe =>  <Recipe key={recipe.id}  {...recipe}  />
                 )
             }
+        </div>
+        <div className="recipe-list__add-recipe-btn-container">
+            <button className="btn btn--primary">Add Recipe</button>
+        </div>
         </div>
     );
 }

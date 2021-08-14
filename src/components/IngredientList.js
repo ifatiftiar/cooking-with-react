@@ -4,7 +4,7 @@ import Ingredient from './Ingredient';
 function IngredientList({ingredients}) {
     const ingredientElements = ingredients.map(ingredient => <Ingredient key={ingredient.id} {...ingredient} />)
     return (
-        <div>
+        <div className="ingredient-grid">
             {ingredientElements}
         </div>
     );

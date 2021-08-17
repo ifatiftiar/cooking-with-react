@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-function Ingredient({name, amount}) {
+function Ingredient({ name, amount }) {
     return (
         <>
             <span>{name}</span>

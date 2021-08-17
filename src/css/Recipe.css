@@ -9,7 +9,7 @@
     padding-bottom: 10px;
 }
 
-.recipe__header{
+.recipe__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,15 +21,15 @@
     font-size: 1.75rem;
 }
 
-.recipe__row{
+.recipe__row {
     margin-top: 10px;
 }
 
-.recipe__label{
+.recipe__label {
     margin-right: 5px;
 }
 
-.recipe__value{
+.recipe__value {
     font-weight: 300;
 }
 

@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { RecipeContext } from "../App";
 import RecipeIngredientEdit from "./RecipeIngredientEdit";
 
@@ -16,6 +17,22 @@ function RecipeEdit({ recipe }) {
         const index = newIngredients.findIndex((i) => i.id === id);
         newIngredients[index] = ingredient;
         handleChange({ ingredients: newIngredients });
+    }
+
+    function handleIngredientAdd() {
+        console.log({ ...recipe.ingredients });
+        const newIngredients = {
+            id: uuidv4(),
+            name: "",
+            amount: "",
+        };
+        handleChange({ ingredients: [...recipe.ingredients, newIngredients] });
+    }
+
+    function handleIngredientDelete(id) {
+        handleChange({
+            ingredients: recipe.ingredients.filter((i) => i.id !== id),
+        });
     }
 
     return (
@@ -38,7 +55,7 @@ function RecipeEdit({ recipe }) {
                     name="name"
                     id="name"
                     value={name}
-                    onInput={(e) => handleChange({ name: e.target.value })}
+                    onChange={(e) => handleChange({ name: e.target.value })}
                 />
 
                 <label className="recipe-edit__label" htmlFor="cookTime">
@@ -50,7 +67,7 @@ function RecipeEdit({ recipe }) {
                     name="cookTime"
                     id="cookTime"
                     value={cookTime}
-                    onInput={(e) => handleChange({ cookTime: e.target.value })}
+                    onChange={(e) => handleChange({ cookTime: e.target.value })}
                 />
 
                 <label className="recipe-edit__label" htmlFor="servings">
@@ -63,7 +80,7 @@ function RecipeEdit({ recipe }) {
                     id="servings"
                     min="1"
                     value={servings}
-                    onInput={(e) =>
+                    onChange={(e) =>
                         handleChange({
                             servings: parseInt(e.target.value) || "",
                         })
@@ -79,7 +96,7 @@ function RecipeEdit({ recipe }) {
                     name="instructions"
                     id="instructions"
                     value={instructions}
-                    onInput={(e) =>
+                    onChange={(e) =>
                         handleChange({ instructions: e.target.value })
                     }
                 />
@@ -93,13 +110,20 @@ function RecipeEdit({ recipe }) {
                 {ingredients.map((ingredient) => (
                     <RecipeIngredientEdit
                         handleIngredientChange={handleIngredientChange}
+                        handleIngredientDelete={handleIngredientDelete}
                         key={ingredient.id}
                         ingredient={ingredient}
+                        recipe={recipe}
                     />
                 ))}
             </div>
             <div className="recipe-edit__add-ingredient-btn-container">
-                <button className="btn btn--primary">Add Ingredient</button>
+                <button
+                    className="btn btn--primary"
+                    onClick={handleIngredientAdd}
+                >
+                    Add Ingredient
+                </button>
             </div>
         </div>
     );

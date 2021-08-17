@@ -1,7 +1,8 @@
 import React from "react";
 
 function RecipeIngredientEdit(props) {
-    const { ingredient, handleIngredientChange } = props;
+    const { ingredient, handleIngredientChange, handleIngredientDelete } =
+        props;
 
     function handleChange(changes) {
         handleIngredientChange(ingredient.id, { ...ingredient, ...changes });
@@ -21,7 +22,12 @@ function RecipeIngredientEdit(props) {
                 value={ingredient.amount}
                 onInput={(e) => handleChange({ amount: e.target.value })}
             />
-            <button className="btn btn--danger">&times;</button>
+            <button
+                className="btn btn--danger"
+                onClick={() => handleIngredientDelete(ingredient.id)}
+            >
+                &times;
+            </button>
         </>
     );
 }
